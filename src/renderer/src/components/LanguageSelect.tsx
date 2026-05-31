@@ -14,11 +14,13 @@ function LanguageSelect(): React.ReactElement {
         options={[
           { value: 'zh-CN', label: '中文' },
           { value: 'en', label: 'English' },
+          { value: 'ja', label: '日本語' },
+          { value: 'hi', label: 'हिन्दी' },
         ]}
         size="small"
         variant="borderless"
         popupMatchSelectWidth={false}
-        style={{ width: 90 }}
+        style={{ width: 112 }}
       />
     </Space>
   )

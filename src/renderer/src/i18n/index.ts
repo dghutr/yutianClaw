@@ -7,6 +7,8 @@ i18n.use(initReactI18next).init({
   resources: {
     'zh-CN': { translation: zhCN },
     en: { translation: en },
+    ja: { translation: en },
+    hi: { translation: en },
   },
   lng: 'zh-CN',
   fallbackLng: 'zh-CN',

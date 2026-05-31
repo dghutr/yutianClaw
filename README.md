@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="src/renderer/src/assets/logo.svg" width="128" height="128" alt="YuTianClaw Logo" />
+  <img src="assets/icon-512.png" width="128" height="128" alt="YuTianClaw app icon" />
 </p>
 
 <h1 align="center">YuTianClaw</h1>
 
 <p align="center">
-  <strong>一键部署 OpenClaw，小白轻松上手</strong><br/>
-  <sub>无需环境配置，无需终端命令，扫码即可创建飞书/企微机器人</sub>
+  <strong>One-click OpenClaw deployment for AI digital employees</strong><br/>
+  <sub>A desktop workspace for agents, chat channels, skills, local files, and automated tasks.</sub>
 </p>
 
 <p align="center">
@@ -18,204 +18,124 @@
 </p>
 
 <p align="center">
-  简体中文 | <a href="README.en.md">English</a>
-</p>
-
-<p align="center">
-  官网：<a href="https://www.yutianclaw.cn">yutianclaw.cn</a> ·
-  镜像：<a href="https://www.yutianclaw.cloud">yutianclaw.cloud</a> /
-  <a href="https://www.yutianclaw.icu">yutianclaw.icu</a><br/>
-  项目地址：<a href="https://gitee.com/teacherLei/yutianclaw">https://gitee.com/teacherLei/yutianclaw</a>
+  Project: <a href="https://github.com/dghutr/yutianClaw">https://github.com/dghutr/yutianClaw</a>
 </p>
 
 ---
 
-## YuTianClaw 是什么
+## Overview
 
-[OpenClaw](https://github.com/OpenClaw) 是一款强大的 AI 助手框架，但对普通用户来说安装配置门槛较高——需要 Node.js 环境、命令行操作、手动编辑 JSON 配置。
+YuTianClaw is a desktop platform built around OpenClaw for creating and running AI
+digital employees. It packages the runtime, model configuration, chat channels,
+skills, local file handling, PDF generation, image generation, scheduled tasks,
+and operational tooling into one visual application.
 
-**YuTianClaw** 就是为了消除这道门槛而生的桌面工具。它把繁琐的部署流程封装成可视化操作，内置 Node.js 22 + OpenClaw 运行时，让任何人都能在几分钟内拥有自己的 AI 全能助手。
+The goal is to move AI from simple chat into executable workflows. A user can
+talk to an agent, ask it to analyze information, generate local files, call
+skills, connect to external chat channels, and return results to the right
+conversation.
 
-**核心特性：**
+## Core Features
 
-- **零依赖安装** — 内置运行时，下载即用，不需要安装 Node.js 或任何命令行工具
-- **全程可视化** — 模型接入、渠道对接、配对审批、Agent 管理，所有操作都在图形界面完成
-- **扫码创建机器人** — 飞书/企业微信只需扫一下二维码，自动完成应用创建和凭证回填
-- **崩溃自动恢复** — Gateway 挂了自动重试，用尽后引导从历史快照一键恢复
-- **AI 安全审查** — 安装技能前 AI 自动分析代码风险等级和权限清单，保障使用安全
-- **应用内配对审批** — IM 用户发起配对请求，桌面端实时弹窗，一键批准或拒绝
-- **多 Agent 多渠道** — 不同渠道、不同账号可绑定不同 AI 人格，各司其职
-- **HTTP 代理支持** — 内置代理配置，国内用户轻松访问 OpenAI、Telegram 等国外服务
+- **Bundled runtime**: ships with the required Node.js and OpenClaw runtime.
+- **Visual model setup**: connect built-in providers or custom OpenAI-compatible endpoints.
+- **Digital employee management**: create multiple agents with separate roles, workspaces, tools, and skills.
+- **Live chat**: multi-session desktop chat with streaming output, reasoning/process display, usage display, and file actions.
+- **External channels**: connect IM channels such as Feishu and WeCom, bind accounts to agents, and sync conversations back to the desktop.
+- **Skills marketplace**: browse, import, vet, install, enable, disable, and export skills.
+- **Built-in skills**: PDF generation, image generation, video-related workflows, and local file utilities.
+- **MCP support**: manage MCP services while protecting runtime configuration from unsafe writes.
+- **Automation**: create scheduled jobs for recurring intelligence collection and other workflows.
+- **Account integration**: login, sync API keys, show balance, and route calls through the configured model provider.
+- **Operations tooling**: logs, backups, crash recovery, updates, proxy settings, and gateway diagnostics.
 
-## 功能一览
+## Typical Use Cases
 
-<table>
-  <tr>
-    <td width="50%">
+- Generate course introductions, reports, PDF files, and marketing material.
+- Build teaching assistants, homework assistants, exam assistants, and career planning assistants.
+- Use mobile chat channels to control desktop agents that can operate local files.
+- Connect custom large language models and compare provider performance.
+- Run scheduled research, monitoring, and content preparation tasks.
+- Extend the platform with paid or private skills.
 
-**🚀 5 步 Setup 向导**
+## Getting Started
 
-环境检测 → 模型配置 → 渠道配置 → 确认 → 启动。从零到运行，全程引导，无需终端。
+### Install
 
-</td>
-    <td width="50%">
+Download the installer from the project release page when a packaged build is
+available:
 
-**💬 实时聊天**
+<p>
+  <a href="https://github.com/dghutr/yutianClaw/releases">https://github.com/dghutr/yutianClaw/releases</a>
+</p>
 
-WebSocket 直连 Gateway，多会话管理，流式 Markdown 渲染，`/` 快捷指令。
-
-</td>
-  </tr>
-  <tr>
-    <td>
-
-**🤖 Agent 管理**
-
-创建多个 AI 人格，编辑工作区文件（AGENTS.md / SOUL.md / MEMORY.md），精细控制工具权限和 Skills 白名单。
-
-</td>
-    <td>
-
-**📡 IM 渠道**
-
-飞书、企微、QQ Bot、钉钉、Telegram、Discord、Slack。飞书/企微扫码创建，多账户管理，配对审批。
-
-</td>
-  </tr>
-  <tr>
-    <td>
-
-**🔧 模型配置**
-
-国内（Moonshot / 通义千问 / 智谱 / DeepSeek …）、国际（Claude / GPT / Gemini）、自定义端点。API Key 一键验证，远程模型批量导入。
-
-</td>
-    <td>
-
-**🧩 Skills 市场**
-
-浏览 ClawHub 技能市场，AI 安全审查后一键安装。已安装技能支持启用/禁用、API Key 内联编辑、导出。
-
-</td>
-  </tr>
-  <tr>
-    <td>
-
-**⏰ 定时任务**
-
-间隔 / Cron / 单次三种调度方式，指定 Agent 自动执行，运行历史追踪。
-
-</td>
-    <td>
-
-**⚙️ 设置与运维**
-
-语言切换、代理配置、自动更新（桌面端 + 引擎）、实时日志、智能快照备份与崩溃恢复。
-
-</td>
-  </tr>
-</table>
-
----
-
-## 快速上手
-
-### 下载安装
-
-从 [Gitee Releases](https://gitee.com/teacherLei/yutianclaw/releases) 下载适合你平台的安装包：
-
-| 平台 | 架构 |
-|------|------|
-| macOS | Apple Silicon (arm64) / Intel (x64) |
+| Platform | Architectures |
+|----------|---------------|
 | Windows | x64 / arm64 |
+| macOS | Apple Silicon / Intel |
 
-### 卸载与数据目录
+### First Launch
 
-- Windows 卸载时会提供复选框：`删除 YuTianClaw 本地数据 (~/.yutianclaw)`，默认不勾选
-- 若不勾选，仅卸载应用程序，`~/.yutianclaw` 目录会保留
-- `~/.openclaw`（OpenClaw 配置与凭证）始终保留，不会被 YuTianClaw 卸载流程删除
+1. Open the desktop app.
+2. Log in or manually configure a model provider.
+3. Start the gateway when the app prompts you.
+4. Create or select a digital employee.
+5. Start chatting, connect channels, or install skills as needed.
 
-### 首次启动
+If no model is configured, the app will prompt the user to log in or manually
+add a provider before chat execution.
 
-Setup 向导会引导你完成所有配置：
+## Build From Source
 
-1. **环境检测** — 自动扫描本机环境，检测已有 OpenClaw 和端口占用
-2. **配置模型** — 选择 Provider（国内/国际/自定义），填入 API Key 并验证
-3. **配置渠道** — 选择 IM 渠道，飞书/企微可扫码快速创建（可跳过）
-4. **确认** — 检查配置汇总
-5. **启动** — 写入配置，启动 Gateway，进入主界面
-
----
-
-## 从源码构建
-
-### 前置要求
+### Requirements
 
 - Node.js 22+
 - npm 10+
 
-### 开发
+### Development
 
 ```bash
-git clone https://gitee.com/teacherLei/yutianclaw.git
-cd yutianclaw
+git clone https://github.com/dghutr/yutianClaw.git
+cd yutianClaw
 npm install
 npm run dev
 ```
 
-### 常用命令
+### Common Commands
 
-| 命令 | 说明 |
-|------|------|
-| `npm run dev` | 热重载开发模式 |
-| `npm run lint` | ESLint + TypeScript 类型检查 |
-| `npm run typecheck` | 仅类型检查 |
-| `npm test` | Vitest 单次运行 |
-| `npm run build:win` | Windows 打包 |
-| `npm run build:mac` | macOS 打包 |
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start the Electron development app |
+| `npm run typecheck` | Run TypeScript checks |
+| `npm test` | Run tests once |
+| `npm run build` | Build app bundles |
+| `npm run dist:win:x64` | Build a Windows x64 installer |
+| `npm run dist:mac:arm64` | Build a macOS arm64 package |
 
-### 技术栈
+## Technology Stack
 
-| 层级 | 技术 |
-|------|------|
-| 桌面框架 | Electron 40+ |
-| 构建工具 | electron-vite 5 |
-| UI | React 19 + Ant Design 6 |
-| 状态管理 | Zustand |
-| 国际化 | i18next |
-| 打包 | electron-builder |
-| 测试 | Vitest |
+| Layer | Technology |
+|-------|------------|
+| Desktop | Electron |
+| Build | electron-vite |
+| UI | React + Ant Design |
+| State | Zustand |
+| i18n | i18next |
+| Runtime | OpenClaw + bundled Node.js |
+| Packaging | electron-builder |
+| Testing | Vitest |
 
----
+## Repository Notes
 
-## 参与贡献
+Generated installers, unpacked builds, runtime targets, caches, local logs, and
+test artifacts are intentionally excluded from source control.
 
-欢迎各种形式的贡献——Bug 修复、新功能、文档改进、翻译。
+## Acknowledgements
 
-1. Fork 本仓库
-2. 创建功能分支（`git checkout -b feature/xxx`）
-3. 提交变更
-4. 创建 Pull Request
+- [OpenClaw](https://github.com/OpenClaw) for the agent runtime foundation.
+- [Electron](https://www.electronjs.org/) for the cross-platform desktop shell.
+- [React](https://react.dev/) and [Ant Design](https://ant.design/) for the UI layer.
 
-> 贡献规范：遵循 ESLint + Prettier 代码风格，所有 UI 文本使用 i18n，新功能需附带测试。
+## License
 
----
-
-## 致谢
-
-- [OpenClaw](https://github.com/OpenClaw) — AI 智能体运行时
-- [Electron](https://www.electronjs.org/) — 跨平台桌面框架
-- [React](https://react.dev/) — UI 组件库
-- [Ant Design](https://ant.design/) — 企业级 UI 设计体系
-
----
-
-## 许可证
-
-YuTianClaw 基于 [GPL-3.0 许可证](LICENSE) 发布。
-
----
-
-<p align="center">
-  <sub>YuTianClaw — 点击即装 OpenClaw</sub>
-</p>
+YuTianClaw is released under the [GPL-3.0 License](LICENSE).
