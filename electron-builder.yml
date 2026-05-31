@@ -1,0 +1,84 @@
+appId: cn.yutianclaw.app
+productName: YuTianClaw
+copyright: Copyright © 2026 YuTianClaw
+
+directories:
+  buildResources: assets
+  output: dist
+
+# extraResources：将图标文件复制到打包后的 resources/ 目录
+# （buildResources 目录的文件仅用于构建过程，不打包进 asar，运行时无法访问）
+extraResources:
+  - from: assets/icon-256.png
+    to: icon-256.png
+  - from: assets/icon.ico
+    to: icon.ico
+
+# afterPack 钩子：electron-builder 完成文件收集后注入预构建资源
+# resources/targets/ 在此阶段注入，不走普通 files 打包流程
+afterPack: ./scripts/afterPack.js
+
+files:
+  - "out/**/*"
+  - "package.json"
+  # Runtime dependencies used by out/main/index.js.
+  # Renderer dependencies are bundled by Vite into out/renderer/assets, so do
+  # not ship the full development node_modules tree in app.asar.
+  - "node_modules/adm-zip/**/*"
+  - "node_modules/json5/**/*"
+  - "node_modules/electron-log/**/*"
+  - "node_modules/electron-updater/**/*"
+  - "node_modules/builder-util-runtime/**/*"
+  - "node_modules/fs-extra/**/*"
+  - "node_modules/graceful-fs/**/*"
+  - "node_modules/jsonfile/**/*"
+  - "node_modules/universalify/**/*"
+  - "node_modules/js-yaml/**/*"
+  - "node_modules/argparse/**/*"
+  - "node_modules/lazy-val/**/*"
+  - "node_modules/lodash.escaperegexp/**/*"
+  - "node_modules/lodash.isequal/**/*"
+  - "node_modules/semver/**/*"
+  - "node_modules/tiny-typed-emitter/**/*"
+  - "node_modules/debug/**/*"
+  - "node_modules/ms/**/*"
+  - "node_modules/sax/**/*"
+
+mac:
+  target:
+    - dmg
+    - zip
+  icon: assets/icon.icns
+  category: public.app-category.productivity
+  artifactName: "YuTianClaw-${version}-${arch}.${ext}"
+  hardenedRuntime: true
+  gatekeeperAssess: false
+  entitlements: assets/entitlements.mac.plist
+  entitlementsInherit: assets/entitlements.mac.plist
+
+dmg:
+  # 关闭 DMG 差分更新元数据，避免生成 .dmg.blockmap
+  writeUpdateInfo: false
+  artifactName: "YuTianClaw-${version}-${arch}.${ext}"
+
+win:
+  target: nsis
+  icon: assets/icon.ico
+
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  runAfterFinish: true
+  include: build/installer.nsh
+  # 关闭 NSIS 差分包，避免生成 .exe.blockmap
+  differentialPackage: false
+  artifactName: "YuTianClaw-Setup-${version}-${arch}.${ext}"
+
+# 自动更新：Generic CDN provider
+# latest.yml / latest-mac.yml 由 electron-builder 打包时自动生成并需上传到同一 CDN 目录
+publish:
+  provider: generic
+  url: http://106.54.160.106

@@ -1,0 +1,4 @@
+interface:
+  display_name: "HyperFrames Video Generator"
+  short_description: "Generate polished explainer videos with narration and BGM"
+  default_prompt: "Use $hyperframes-video-generator to create a polished two-minute project explainer video with narration and background music."
